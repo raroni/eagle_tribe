@@ -48,14 +48,15 @@ Renderer.prototype = {
   },
   draw: function() {
     this.context.clear(this.context.COLOR_BUFFER_BIT | this.context.DEPTH_BUFFER_BIT);
-    
+
     if(this.currentStaticRenderer) {
       this.currentStaticRenderer.bake();
       delete this.currentStaticRenderer;
     }
-    
-    this.shaderProgram.setMatrix4Uniform('viewTransformation', this.camera.getViewTransformation());
+
     this.shaderProgram.use();
+    this.shaderProgram.setMatrix4Uniform('viewTransformation', this.camera.getViewTransformation());
+    this.shaderProgram.setMatrix4Uniform('worldTransformation', Matrix4.identity());
     for(var i=0; this.meshRenderers.length>i; i++) {
       this.meshRenderers[i].draw();
     }

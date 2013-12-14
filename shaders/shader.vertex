@@ -3,12 +3,13 @@ attribute vec3 color;
 attribute vec3 normal;
 
 uniform mat4 clipTransformation;
+uniform mat4 worldTransformation;
 uniform mat4 viewTransformation;
 
 varying vec3 sharedColor;
 
 void main() {
-  gl_Position = clipTransformation*viewTransformation*vec4(position, 1.0);
+  gl_Position = clipTransformation*viewTransformation*worldTransformation*vec4(position, 1.0);
   vec3 x = normal; // placeholder!
   sharedColor = color;
 }
