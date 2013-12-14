@@ -9,3 +9,7 @@ Color.red = function() {
 Color.brown = function() {
   return new Color(0.64, 0.38, 0.1);
 };
+
+Color.green = function() {
+  return new Color(0, 1, 0);
+};

@@ -43,6 +43,14 @@ function BoxMesh(transformation, color) {
   this.addFace(16, 17, 18);
   this.addFace(18, 17, 19);
 
+  // bottom
+  this.addVertex(this.createVertex(new Point3D(-1, -1, -1)));
+  this.addVertex(this.createVertex(new Point3D(1, -1, -1)));
+  this.addVertex(this.createVertex(new Point3D(-1, -1, 1)));
+  this.addVertex(this.createVertex(new Point3D(1, -1, 1)));
+  this.addFace(22, 21, 20);
+  this.addFace(23, 21, 22);
+
   for(var i=0; this.vertices.length>i; i++) {
     this.vertices[i].position.transform(transformation);
   }

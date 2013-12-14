@@ -10,6 +10,16 @@ function Matrix4() {
   }
 }
 
+Matrix4.prototype.multiply = function(matrix) {
+  this.set(Matrix4.multiply(this, matrix));
+};
+
+Matrix4.prototype.set = function(matrix) {
+  for(var i=0; 16>i; i++) {
+    this[i] = matrix[i];
+  }
+};
+
 Matrix4.multiplyVector = function(matrix, vector) {
   var result = new Vector4();
 
@@ -18,6 +28,22 @@ Matrix4.multiplyVector = function(matrix, vector) {
       result[row] += matrix[step*4+row] * vector[step];
     }
   }
+  return result;
+};
+
+Matrix4.multiply = function(matrix1, matrix2) {
+  var result = new Matrix4();
+
+  var resultIndex;
+  for(var row=0; 4>row; row++) {
+      for(var column=0; 4>column; column++) {
+          resultIndex = column*4+row;
+          for(var step=0; 4>step; step++) {
+              result[resultIndex] += matrix1[row+step*4] * matrix2[column*4+step];
+          }
+      }
+  }
+  
   return result;
 };
 
