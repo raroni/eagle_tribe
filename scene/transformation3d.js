@@ -10,6 +10,11 @@ Transformation3D.prototype.setPositionZ = function(z) {
   this.markMatricesDirty();
 }
 
+Transformation3D.prototype.setPosition = function(position) {
+  this.position = position;
+  this.markMatricesDirty();
+}
+
 Transformation3D.prototype.translateY = function(yChange) {
   this.position[1] += yChange;
   this.markMatricesDirty();
