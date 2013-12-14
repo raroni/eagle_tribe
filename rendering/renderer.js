@@ -15,14 +15,14 @@ Renderer.prototype = {
 
     this.setResolution(800, 600);
 
-    new Request('./shader.vertex', this.handleResponse.bind(this)).send();
-    new Request('./shader.fragment', this.handleResponse.bind(this)).send();
+    new Request('./shaders/shader.vertex', this.handleResponse.bind(this)).send();
+    new Request('./shaders/shader.fragment', this.handleResponse.bind(this)).send();
   },
   getAspectRatio: function() {
     return this.canvas.width/this.canvas.height;
   },
   handleResponse: function(request) {
-    if(request.path === './shader.vertex') {
+    if(request.path === './shaders/shader.vertex') {
       this.shaderProgram.vertexSource = request.response;
     } else {
       this.shaderProgram.fragmentSource = request.response;

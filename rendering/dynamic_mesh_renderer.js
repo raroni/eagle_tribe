@@ -4,5 +4,5 @@ function DynamicMeshRenderer(context, mesh) {
 }
 
 MeshRenderer.prototype.draw = function() {
-  
+
 }
