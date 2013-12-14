@@ -1,4 +1,4 @@
-function Point3() {
+function Point3D() {
   if(arguments.length == 1) {
     Vector3.call(this, arguments[0][0], arguments[0][1], arguments[0][2]);
   } else if(arguments.length == 3) {
@@ -8,13 +8,13 @@ function Point3() {
   }
 }
 
-Point3.prototype = Object.create(Vector3.prototype);
+Point3D.prototype = Object.create(Vector3.prototype);
 
-Point3.origin = function() {
-  return new Point3(0, 0, 0);
+Point3D.origin = function() {
+  return new Point3D(0, 0, 0);
 };
 
-Point3.transform = function(point, transformation) {
+Point3D.transform = function(point, transformation) {
   var vector = Vector3.transform(point, transformation);
-  return new Point3(vector);
+  return new Point3D(vector);
 };

@@ -1,6 +1,6 @@
 function Camera(renderer) {
   this.renderer = renderer;
-  this.transformation = new Transformation3();
+  this.transformation = new Transformation3D();
 }
 
 Camera.prototype.getClipTransformation = function() {

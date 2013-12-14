@@ -4,7 +4,7 @@ function PlaneMesh(center, size, forward, normal, color) {
   this.color = color;
   this.normal = normal;
 
-  var right = Direction3.negate(Direction3.cross(forward, normal));
+  var right = Direction3D.negate(Direction3D.cross(forward, normal));
 
   var halfRight = Vector3.multiply(right, 0.5*size[0]);
   var halfForward = Vector3.multiply(forward, 0.5*size[1]);
