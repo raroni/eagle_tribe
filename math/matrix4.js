@@ -70,6 +70,34 @@ Matrix4.identity = function() {
   return matrix;
 };
 
+Matrix4.yRotation = function(yRotation) {
+    var matrix = Matrix4.identity();
+    
+    var cosAngle = Math.cos(yRotation);
+    var sinAngle = Math.sin(yRotation);
+    
+    matrix[0] = cosAngle;
+    matrix[2] = -sinAngle;
+    matrix[8] = sinAngle;
+    matrix[10] = cosAngle;
+    
+    return matrix;
+};
+
+Matrix4.xRotation = function(yRotation) {
+    var matrix = Matrix4.identity();
+    
+    var cosAngle = Math.cos(yRotation);
+    var sinAngle = Math.sin(yRotation);
+    
+    matrix[5] = cosAngle;
+    matrix[6] = sinAngle;
+    matrix[9] = -sinAngle;
+    matrix[10] = cosAngle;
+    
+    return matrix;
+}
+
 Matrix4.translation = function(translation) {
   var matrix = Matrix4.identity();
 

@@ -21,7 +21,6 @@ WorldScene.prototype.setupLight = function() {
   directionalLight2.intensity = new Color(0.1, 0.1, 0.1);
   this.game.renderer.setDirectionalLight(directionalLight2, 2);
 
-
   var ambientLight = new Color(0.5, 0.5, 0.5);
   this.game.renderer.setAmbientLightIntensity(ambientLight);
 };

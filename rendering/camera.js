@@ -4,7 +4,7 @@ function Camera(renderer) {
 }
 
 Camera.prototype.getClipTransformation = function() {
-  var matrix = Matrix4.perspective(90, this.renderer.getAspectRatio(), 0.1, 10);;
+  var matrix = Matrix4.perspective(Math.PI/2, this.renderer.getAspectRatio(), 0.1, 10);;
   return matrix;
 };
 
