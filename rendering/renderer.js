@@ -19,6 +19,13 @@ Renderer.prototype = {
     new Request('./shaders/shader.vertex', this.handleResponse.bind(this)).send();
     new Request('./shaders/shader.fragment', this.handleResponse.bind(this)).send();
   },
+  setDirectionalLight: function(directionalLight) {
+    this.shaderProgram.setVector3Uniform('directionalLightInverseDirection', Vector3.negate(directionalLight.direction));
+    this.shaderProgram.setVector3Uniform('directionalLightIntensity', directionalLight.intensity);
+  },
+  setAmbientLightIntensity: function(ambientLightIntensity) {
+    this.shaderProgram.setVector3Uniform('ambientLightIntensity', ambientLightIntensity);
+  },
   getAspectRatio: function() {
     return this.canvas.width/this.canvas.height;
   },
