@@ -7,3 +7,7 @@ Camera.prototype.getClipTransformation = function() {
   var matrix = Matrix4.perspective(90, this.renderer.getAspectRatio(), 0.1, 10);;
   return matrix;
 };
+
+Camera.prototype.getViewTransformation = function() {
+  return this.transformation.getInverseWorldMatrix();
+};

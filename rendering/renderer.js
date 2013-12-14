@@ -53,6 +53,7 @@ Renderer.prototype = {
       delete this.currentStaticRenderer;
     }
     
+    this.shaderProgram.setMatrix4Uniform('viewTransformation', this.camera.getViewTransformation());
     this.shaderProgram.use();
     for(var i=0; this.meshRenderers.length>i; i++) {
       this.meshRenderers[i].draw();
