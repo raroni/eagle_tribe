@@ -33,5 +33,5 @@ function PlaneMesh(center, size, forward, normal, color) {
 PlaneMesh.prototype = Object.create(Mesh.prototype);
 
 PlaneMesh.prototype.createVertex = function(position) {
-  return new Vertex(position, this.color, this.normal);
+  return new Vertex(position, this.color);
 };

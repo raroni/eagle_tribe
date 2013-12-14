@@ -22,8 +22,14 @@ Vector3.prototype = {
   subtract: function(vector) {
     this.set(Vector3.subtract(this, vector));
   },
+  normalize: function() {
+    this.set(Vector3.normalize(this));
+  },
   add: function(vector) {
     this.set(Vector3.add(this, vector));
+  },
+  getLength: function() {
+    return Math.sqrt(Math.pow(this[0], 2) + Math.pow(this[1], 2) + Math.pow(this[2], 2));
   }
 };
 
@@ -45,12 +51,20 @@ Vector3.multiply = function(vector, scalar) {
   return new Vector3(vector[0]*scalar, vector[1]*scalar, vector[2]*scalar);
 };
 
+Vector3.divide = function(vector, scalar) {
+  return new Vector3(vector[0]/scalar, vector[1]/scalar, vector[2]/scalar);
+};
+
 Vector3.add = function(vector1, vector2) {
   var result = new Vector3();
   result[0] = vector1[0] + vector2[0];
   result[1] = vector1[1] + vector2[1];
   result[2] = vector1[2] + vector2[2];
   return result;
+};
+
+Vector3.normalize = function(vector) {
+  return Vector3.divide(vector, vector.getLength());
 };
 
 Vector3.subtract = function(vector1, vector2) {
