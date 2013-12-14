@@ -1,5 +1,6 @@
 function Game(canvas) {
   this.renderer = new Renderer(canvas);
+  this.meshes = {};
 }
 
 Game.prototype = {
@@ -19,5 +20,6 @@ Game.prototype = {
   },
   initialize: function(callback) {
     this.renderer.initialize(callback);
+    this.onInitialize();
   }
 };
