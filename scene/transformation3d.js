@@ -70,8 +70,8 @@ Transformation3D.prototype.getInverseWorldMatrix = function() {
 
 Transformation3D.prototype.recalculateInverseWorldMatrix = function() {
   this.inverseWorldMatrix = Matrix4.identity();
-  if(this.yRotation != 0) this.inverseWorldMatrix.multiply(Matrix4.yRotation(-this.yRotation));
   if(this.xRotation != 0) this.inverseWorldMatrix.multiply(Matrix4.xRotation(-this.xRotation));
+  if(this.yRotation != 0) this.inverseWorldMatrix.multiply(Matrix4.yRotation(-this.yRotation));
   this.inverseWorldMatrix.multiply(Matrix4.translation(Vector3.negate(this.position)));
   this.inverseWorldMatrixDirty = false;
 };
