@@ -18,3 +18,8 @@ Point3D.transform = function(point, transformation) {
   var vector = Vector3.transform(point, transformation);
   return new Point3D(vector);
 };
+
+Point3D.add = function(point, vector) {
+  var result = Vector3.add(point, vector);
+  return new Point3D(result);
+};

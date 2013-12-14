@@ -4,5 +4,6 @@ function CameraHandler(game, eagle) {
 }
 
 CameraHandler.prototype.update = function(timeDelta) {
-  this.transformation.setPosition(this.eagle.transformation.position);
+  var position = Point3D.add(this.eagle.transformation.position, new Vector3(0, 0.1, 0));
+  this.transformation.setPosition(position);
 };
