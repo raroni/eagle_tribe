@@ -2,10 +2,12 @@ attribute vec3 position;
 attribute vec3 color;
 attribute vec3 normal;
 
+uniform mat4 clipTransformation;
+
 varying vec3 sharedColor;
 
 void main() {
-  gl_Position = vec4(position, 1.0);
+  gl_Position = clipTransformation*vec4(position, 1.0);
   vec3 x = normal; // placeholder!
   sharedColor = color;
 }

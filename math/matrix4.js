@@ -21,11 +21,37 @@ Matrix4.multiplyVector = function(matrix, vector) {
   return result;
 };
 
+Matrix4.perspective = function(fieldOfView, aspectRatio, near, far) {
+  var matrix = new Matrix4();
+
+  var halfFovTangent = Math.tan(fieldOfView/2);
+
+  matrix[0] = 1/halfFovTangent;
+  matrix[5] = aspectRatio/halfFovTangent;
+  matrix[10] = (far + near) / (far - near);
+  matrix[11] = 1;
+  matrix[14] = -(2*far*near)/(far-near);
+
+  console.log(matrix);
+
+  return matrix;
+}
+
 Matrix4.identity = function() {
   var matrix = new Matrix4();
   matrix[0] = 1;
   matrix[5] = 1;
   matrix[10] = 1;
   matrix[15] = 1;
+  return matrix;
+};
+
+Matrix4.translation = function(translation) {
+  var matrix = Matrix4.identity();
+
+  matrix[12] = translation[0];
+  matrix[13] = translation[1];
+  matrix[14] = translation[2];
+
   return matrix;
 };

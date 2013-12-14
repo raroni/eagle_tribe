@@ -1,5 +1,5 @@
 function Renderer(canvas) {
-  this.camera = new Camera();
+  this.camera = new Camera(this);
   this.canvas = canvas;
   this.context = canvas.getContext("experimental-webgl");
   this.shaderProgram = new ShaderProgram(this.context);
@@ -13,13 +13,13 @@ Renderer.prototype = {
     this.context.clearColor(0.0, 0.0, 0.0, 1.0);
     this.context.enable(this.context.DEPTH_TEST);
 
-    this.canvas.width = 800;
-    this.canvas.height = 600;
-
-    this.context.viewport(0, 0, 800, 600);
+    this.setResolution(800, 600);
 
     new Request('./shader.vertex', this.handleResponse.bind(this)).send();
     new Request('./shader.fragment', this.handleResponse.bind(this)).send();
+  },
+  getAspectRatio: function() {
+    return this.canvas.width/this.canvas.height;
   },
   handleResponse: function(request) {
     if(request.path === './shader.vertex') {
@@ -31,9 +31,17 @@ Renderer.prototype = {
       this.finalizeInitialization();
     }
   },
+  setResolution: function() {
+    this.canvas.width = 800;
+    this.canvas.height = 600;
+    this.context.viewport(0, 0, 800, 600);
+  },
   finalizeInitialization: function() {
     this.shaderProgram.compile();
     this.shaderProgram.link();
+
+    this.shaderProgram.setMatrix4Uniform('clipTransformation', this.camera.getClipTransformation());
+
     this.initializedCallback();
     delete this.initializedCallback;
   },

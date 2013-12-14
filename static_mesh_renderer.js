@@ -15,7 +15,7 @@ StaticMeshRenderer.prototype = {
     var rendererVertex, meshVertex, i;
     for(i=0; mesh.vertices.length>i; i++) {
       meshVertex = mesh.vertices[i];
-      rendererVertex = new Vertex(Point3.transform(meshVertex.position, transformation.getMatrix()), meshVertex.color, meshVertex.normal);
+      rendererVertex = new Vertex(Point3.transform(meshVertex.position, transformation.getWorldMatrix()), meshVertex.color, meshVertex.normal);
       this.vertices.push(rendererVertex);
     }
 
