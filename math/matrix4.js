@@ -32,8 +32,6 @@ Matrix4.perspective = function(fieldOfView, aspectRatio, near, far) {
   matrix[11] = 1;
   matrix[14] = -(2*far*near)/(far-near);
 
-  console.log(matrix);
-
   return matrix;
 }
 

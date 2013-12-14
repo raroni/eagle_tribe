@@ -16,7 +16,6 @@ Transformation3D.prototype.getWorldMatrix = function() {
 };
 
 Transformation3D.prototype.recalculateWorldMatrix = function() {
-  console.log(this.position);
   this.worldMatrix = Matrix4.translation(this.position);
   this.worldMatrixDirty = false;
 };
