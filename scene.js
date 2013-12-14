@@ -5,8 +5,13 @@ function Scene(game) {
 
 Scene.prototype = {
   update: function(timeDelta) {
+    var entity;
     for(var i=0; this.entities.length>i; i++) {
-      this.entities[i].update(timeDelta);
+      entity = this.entities[i];
+      if(entity.update) entity.update(timeDelta);
     }
+  },
+  add: function(entity) {
+    this.entities.push(entity);
   }
 };
