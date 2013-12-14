@@ -1,0 +1,3 @@
+function Mesh() {
+  this.vertices = [];
+}
