@@ -15,8 +15,13 @@ Transformation3D.prototype.setPosition = function(position) {
   this.markMatricesDirty();
 }
 
-Transformation3D.prototype.translateY = function(yChange) {
-  this.position[1] += yChange;
+Transformation3D.prototype.translateY = function(yTranslation) {
+  this.position[1] += yTranslation;
+  this.markMatricesDirty();
+}
+
+Transformation3D.prototype.translate = function(translation) {
+  this.position.add(translation);
   this.markMatricesDirty();
 }
 

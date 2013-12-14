@@ -16,6 +16,12 @@ Direction3D.forward = function() {
   return new Direction3D(0, 0, 1);
 };
 
+Direction3D.transform = function(point, transformation) {
+  var homoVector = new Vector4(point[0], point[1], point[2], 0);
+  var result = Matrix4.multiplyVector(transformation, homoVector);
+  return new Direction3D(result[0], result[1], result[2]);
+};
+
 Direction3D.negate = function(direction) {
   var vector = Vector3.negate(direction);
   return new Direction3D(vector);
