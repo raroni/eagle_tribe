@@ -5,3 +5,7 @@ function Color(x, y, z) {
 Color.red = function() {
   return new Color(1, 0, 0);
 };
+
+Color.brown = function() {
+  return new Color(0.64, 0.38, 0.1);
+};

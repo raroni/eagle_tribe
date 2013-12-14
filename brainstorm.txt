@@ -1,3 +1,8 @@
+Vi burde lave sådan, at vi ikke manuelt skal sætte normals. Det kan Mesh selv gøre.
+
+I samme ombæring kan vi lave sådan at vi understøtter MeshGroup/GroupMesh sådan at man beder om vertices/indices via en funktion i stedet for public property.
+
+
 Here's the deal:
 
 Vi har et kort med træer og græs og måske vand.

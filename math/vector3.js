@@ -37,12 +37,6 @@ Vector3.cross = function(vector1, vector2) {
     return result;
 };
 
-Vector3.transform = function(vector, transformation) {
-  var homoVector = new Vector4(vector[0], vector[1], vector[2], 1);
-  var result = Matrix4.multiplyVector(transformation, homoVector);
-  return new Vector3(result[0], result[1], result[2]);
-};
-
 Vector3.negate = function(vector) {
   return new Vector3(-vector[0], -vector[1], -vector[2]);
 };

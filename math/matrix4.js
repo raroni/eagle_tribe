@@ -53,3 +53,13 @@ Matrix4.translation = function(translation) {
 
   return matrix;
 };
+
+Matrix4.scaling = function(scaling) {
+  var matrix = Matrix4.identity();
+
+  matrix[0] = scaling[0];
+  matrix[5] = scaling[1];
+  matrix[10] = scaling[2];
+
+  return matrix;
+};

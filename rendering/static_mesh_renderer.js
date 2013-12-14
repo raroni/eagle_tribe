@@ -6,6 +6,7 @@ function StaticMeshRenderer(context, shaderProgram) {
   this.positionAttributeHandle = shaderProgram.getAttributeHandle("position");
   this.colorAttributeHandle = shaderProgram.getAttributeHandle("color");
   this.normalAttributeHandle = shaderProgram.getAttributeHandle("normal");
+  this.indexOffset = 0;
 }
 
 StaticMeshRenderer.prototype = {
@@ -19,9 +20,12 @@ StaticMeshRenderer.prototype = {
       this.vertices.push(rendererVertex);
     }
 
-    var indexOffset = this.indices.length;
+    var indexOffset = this.indexOffset;
+    var index;
     for(i=0; mesh.indices.length>i; i++) {
-      this.indices.push(indexOffset + mesh.indices[i]);
+      index = indexOffset + mesh.indices[i];
+      this.indexOffset = Math.max(this.indexOffset, index+1);
+      this.indices.push(index);
     }
   },
   bake: function() {

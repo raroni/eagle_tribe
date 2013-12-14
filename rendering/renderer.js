@@ -11,6 +11,7 @@ Renderer.prototype = {
     this.initializedCallback = callback;
 
     this.context.clearColor(0.0, 0.0, 0.0, 1.0);
+    this.context.enable(this.context.CULL_FACE)
     this.context.enable(this.context.DEPTH_TEST);
 
     this.setResolution(800, 600);
