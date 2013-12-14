@@ -52,13 +52,9 @@ StaticMeshRenderer.prototype = {
 
     this.context.bufferData(this.context.ARRAY_BUFFER, new Float32Array(vertexFloats), this.context.STATIC_DRAW);
 
-    console.log(new Float32Array(vertexFloats));
-
     this.indexBufferHandle = this.context.createBuffer();
     this.context.bindBuffer(this.context.ELEMENT_ARRAY_BUFFER, this.indexBufferHandle);
     this.context.bufferData(this.context.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.indices), this.context.STATIC_DRAW);
-    
-    console.log(new Uint16Array(this.indices));
   },
   draw: function() {
     this.context.bindBuffer(this.context.ARRAY_BUFFER, this.vertexBufferHandle);

@@ -6,8 +6,10 @@ uniform mat4 clipTransformation;
 uniform mat4 worldTransformation;
 uniform mat4 viewTransformation;
 
-uniform vec3 directionalLightInverseDirection;
-uniform vec3 directionalLightIntensity;
+uniform vec3 directionalLight1InverseDirection;
+uniform vec3 directionalLight1Intensity;
+uniform vec3 directionalLight2InverseDirection;
+uniform vec3 directionalLight2Intensity;
 uniform vec3 ambientLightIntensity;
 
 varying vec3 sharedColor;
@@ -17,7 +19,13 @@ void main() {
   sharedColor = color;
 
   vec4 viewSpaceNormal = normalize(viewTransformation * worldTransformation * vec4(normal, 0));
-  float amplication = dot(vec3(viewSpaceNormal), directionalLightInverseDirection);
-  amplication = clamp(amplication, 0.0, 1.0);
-  sharedColor = color*directionalLightIntensity*amplication + color*ambientLightIntensity;
+  
+  float amplication1 = dot(vec3(viewSpaceNormal), directionalLight1InverseDirection);
+  amplication1 = clamp(amplication1, 0.0, 1.0);
+  float amplication2 = dot(vec3(viewSpaceNormal), directionalLight2InverseDirection);
+  amplication2 = clamp(amplication2, 0.0, 1.0);
+  
+  sharedColor = color*directionalLight1Intensity*amplication1;
+  sharedColor += color*directionalLight2Intensity*amplication2;
+  sharedColor += color*ambientLightIntensity;
 }
