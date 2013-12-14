@@ -12,3 +12,11 @@ Mesh.prototype.addFace = function(index1, index2, index3) {
 Mesh.prototype.addVertex = function(vertex) {
   this.vertices.push(vertex);
 };
+
+Mesh.prototype.getVertices = function() {
+  return this.vertices;
+};
+
+Mesh.prototype.getIndices = function() {
+  return this.indices;
+};

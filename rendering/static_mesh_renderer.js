@@ -14,16 +14,18 @@ StaticMeshRenderer.prototype = {
     var transformation = meshRendering.entity.transformation;
     var mesh = meshRendering.mesh;
     var rendererVertex, meshVertex, i;
-    for(i=0; mesh.vertices.length>i; i++) {
-      meshVertex = mesh.vertices[i];
+    var meshVertices = mesh.getVertices();
+    for(i=0; meshVertices.length>i; i++) {
+      meshVertex = meshVertices[i];
       rendererVertex = new Vertex(Point3D.transform(meshVertex.position, transformation.getWorldMatrix()), meshVertex.color, meshVertex.normal);
       this.vertices.push(rendererVertex);
     }
 
     var indexOffset = this.indexOffset;
     var index;
-    for(i=0; mesh.indices.length>i; i++) {
-      index = indexOffset + mesh.indices[i];
+    var meshIndices = mesh.getIndices();
+    for(i=0; meshIndices.length>i; i++) {
+      index = indexOffset + meshIndices[i];
       this.indexOffset = Math.max(this.indexOffset, index+1);
       this.indices.push(index);
     }
