@@ -5,5 +5,5 @@ function CameraHandling(game, eagle) {
 
 CameraHandling.prototype.update = function(timeDelta) {
   this.transformation.set(this.eagle.transformation);
-  this.transformation.translateY(0.1);
+  this.transformation.translateY(0.2);
 };
