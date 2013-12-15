@@ -15,7 +15,7 @@ LevelGenerator.prototype.generate = function() {
 };
 
 LevelGenerator.prototype.growForest = function() {
-  var size = 40, position;
+  var size = 50, position;
   for(var x=-size; size>=x; x++) {
     for(var y=-size; size>=y; y++) {
       position = new Point2D(x, y)

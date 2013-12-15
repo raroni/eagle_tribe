@@ -3,6 +3,10 @@ body {
   background-color: #000;
 }
 
+a {
+  color: #fff;
+}
+
 body > .mouse_lock_request {
   font-family: arial;
   box-sizing: border-box;
