@@ -8,6 +8,24 @@ function Vector2() {
   }
 }
 
+Vector2.prototype.set = function(vector) {
+  this[0] = vector[0];
+  this[1] = vector[1];
+};
+
+Vector2.prototype.add = function(vector) {
+  this.set(Vector2.add(this, vector));
+};
+
+Vector2.prototype.isZero = function() {
+  return this[0] === 0 && this[1] === 0;
+};
+
+Vector2.prototype.reset = function() {
+  this[0] = 0;
+  this[1] = 0;
+};
+
 Vector2.add = function(vector1, vector2) {
   var result = new Vector2(
     vector1[0] + vector2[0],

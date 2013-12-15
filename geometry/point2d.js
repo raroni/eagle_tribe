@@ -6,17 +6,14 @@ function Point2D() {
   }
 }
 
+Point2D.prototype = Object.create(Vector2.prototype);
+
 Point2D.prototype.add = function(vector) {
   this.set(Vector2.add(this, vector));
 };
 
 Point2D.prototype.clone = function() {
   return new Point2D(this[0], this[1]);
-};
-
-Point2D.prototype.set = function(vector) {
-  this[0] = vector[0];
-  this[1] = vector[1];
 };
 
 Point2D.transform = function(point, transformation) {

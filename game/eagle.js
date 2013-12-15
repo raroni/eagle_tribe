@@ -1,8 +1,17 @@
 function Eagle(game) {
   Entity3.call(this);
+  
   this.keyboard = Keyboard.getInstance();
-  this.speed = 0.0017;
+  this.speed = 0.004;
+
+  game.mouse.on('moved', this.handleMouseMovement.bind(this));
+
+  this.mouseMovements = new Vector2();
 }
+
+Eagle.prototype.handleMouseMovement = function(movement) {
+  this.mouseMovements.add(movement);
+};
 
 Eagle.prototype.update = function(timeDelta) {
   if(this.keyboard.keysPressed.space) {
@@ -28,15 +37,11 @@ Eagle.prototype.update = function(timeDelta) {
     this.transformation.translate(translation);
   }
 
-  if(this.keyboard.keysPressed.r) {
-    this.transformation.rotateY(0.02);
-  }
+  if(this.transformation.position[1] < 0) this.transformation.setPositionY(0);
 
-  if(this.keyboard.keysPressed.q) {
-    this.transformation.rotateX(0.02);
-  }
-
-  if(this.transformation.position[1] < 0) {
-    this.transformation.setPositionY(0);
+  if(!this.mouseMovements.isZero()) {
+    this.transformation.rotateY(this.mouseMovements[0]*0.005);
+    this.transformation.rotateX(this.mouseMovements[1]*-0.005);
+    this.mouseMovements.reset();
   }
 };

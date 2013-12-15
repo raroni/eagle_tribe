@@ -1,5 +1,6 @@
 TODO:
 Reduce duplication i shader program loading i Renderer
+Keyboard burde være ligesom Mouse - ikke singleton og kun virke når game.running.
 
 Here's the deal:
 

@@ -17,6 +17,7 @@ Mouse.prototype.resume = function() {
 
 Mouse.prototype.hide = function() {
   this.visible = false;
+  this.position.reset();
 };
 
 Mouse.prototype.show = function() {
@@ -47,9 +48,22 @@ Mouse.prototype.move = function(event) {
   var movementX = event.movementX || event.webkitMovementX || event.mozMovementX;
   var movementY = event.movementY || event.webkitMovementY || event.mozMovementY;
 
-  if(movementX) this.position[0] += movementX;
-  if(movementY) this.position[1] -= movementY;
+  var movement = new Vector2();
+  if(movementX) {
+    if(this.visible) {
+      movementX = Math.clamp(movementX, this.position[0]*-1-this.screen.getWidth()/2, this.screen.getWidth()/2-this.position[0]);
+      this.position[0] += movementX;
+    }
+    movement[0] = movementX;
+  }
+  if(movementY) {
+    movementY *= -1;
+    if(this.visible) {
+      movementY = Math.clamp(movementY, this.position[1]*-1-this.screen.getHeight()/2, this.screen.getHeight()/2-this.position[1]);
+      this.position[1] += movementY;
+    }
+    movement[1] = movementY;
+  }
 
-  this.position[0] = Math.clamp(this.position[0], -this.screen.getWidth()/2, this.screen.getWidth()/2);
-  this.position[1] = Math.clamp(this.position[1], -this.screen.getHeight()/2, this.screen.getHeight()/2);
+  this.notify('moved', movement);
 };
