@@ -1,9 +1,26 @@
 var MeshData = {
   load: function(store) {
-    this.createSmallGreenTrees(store);
+    this.createSmallTrees(store);
   },
-  createSmallGreenTrees: function(store) {
-    var trunkHeight, bonusHeight;
+  createSmallTrees: function(store) {
+    var trunkHeight, bonusHeight, crownColor;
+    var red = new Color(0.7, 0.32, 0.06);
+    var darkGreen = new Color(0.29, 0.57, 0.11);
+    var colors = [
+      Color.green(),
+      Color.green(),
+      Color.green(),
+      Color.green(),
+      Color.green(),
+      Color.green(),
+      darkGreen,
+      darkGreen,
+      darkGreen,
+      darkGreen,
+      darkGreen,
+      darkGreen,
+      red
+    ];
 
     for(var i=1; 10>=i; i++) {
       bonusHeight = Math.random()*1.7;
@@ -17,10 +34,11 @@ var MeshData = {
       crownTransformation.multiply(Matrix4.scaling(new Vector3(0.8, 0.6, 0.8)));
 
       crownTransformation.multiply(Matrix4.xRotation(0.2));
-      var crownMesh = new BoxMesh(crownTransformation, Color.green());
+      crownColor = colors[Math.floor(Math.random()*colors.length)];
+      var crownMesh = new BoxMesh(crownTransformation, crownColor);
 
       var treeMesh = new GroupMesh(trunkMesh, crownMesh);
-      store.add('smallGreenTree' + i, treeMesh);
+      store.add('smallTree' + i, treeMesh);
     }
   }
 };
