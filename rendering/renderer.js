@@ -21,7 +21,7 @@ Renderer.prototype = {
     this.context.enable(this.context.CULL_FACE)
     this.context.enable(this.context.DEPTH_TEST);
 
-    this.setResolution(800, 600);
+    this.setResolution(1024, 768);
 
     this.shaderProgram3D.load('shader3d', this.onShaderLoaded.bind(this));
     this.spriteShaderProgram.load('sprite_shader', this.onShaderLoaded.bind(this));
@@ -38,10 +38,10 @@ Renderer.prototype = {
     this.shaderProgramsReady++;
     if(this.shaderProgramsReady == 3) this.finalizeInitialization();
   },
-  setResolution: function() {
-    this.canvas.width = 800;
-    this.canvas.height = 600;
-    this.context.viewport(0, 0, 800, 600);
+  setResolution: function(width, height) {
+    this.canvas.width = width;
+    this.canvas.height = height;
+    this.context.viewport(0, 0, width, height);
   },
   finalizeInitialization: function() {
     this.shaderProgram3D.setMatrix4Uniform('clipTransformation', this.perspectiveCamera.getClipTransformation());
