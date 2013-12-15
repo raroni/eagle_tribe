@@ -38,10 +38,22 @@ Vector2.add = function(vector1, vector2) {
   return result;
 };
 
+Vector2.normalize = function(vector) {
+  return Vector2.divide(vector, vector.getLength());
+};
+
 Vector2.multiply = function(vector, scalar) {
   var result = new Vector2(
     vector[0] * scalar,
     vector[1] * scalar
+  );
+  return result;
+};
+
+Vector2.divide = function(vector, scalar) {
+  var result = new Vector2(
+    vector[0] / scalar,
+    vector[1] / scalar
   );
   return result;
 };
