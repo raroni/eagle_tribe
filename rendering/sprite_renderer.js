@@ -51,3 +51,8 @@ SpriteRenderer.prototype.draw = function() {
 
   this.context.bindTexture(this.context.TEXTURE_2D, null);
 };
+
+SpriteRenderer.prototype.release = function() {
+  this.context.deleteBuffer(this.vertexBufferHandle);
+  this.context.deleteBuffer(this.indexBufferHandle);
+};

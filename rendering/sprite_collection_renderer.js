@@ -18,3 +18,10 @@ SpriteCollectionRenderer.prototype.draw = function() {
 
   this.context.enable(this.context.DEPTH_TEST);
 };
+
+SpriteCollectionRenderer.prototype.clear = function() {
+  for(var i=0; this.spriteRenderers.length>i; i++) {
+    this.spriteRenderers[i].release();
+  }
+  this.spriteRenderers.length = 0;
+};

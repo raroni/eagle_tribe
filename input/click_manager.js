@@ -29,3 +29,7 @@ ClickManager.prototype.storeClick = function(click) {
 ClickManager.prototype.add = function(clickable) {
   this.clickables.push(clickable);
 };
+
+ClickManager.prototype.clear = function() {
+  this.clickables.length = 0;
+};

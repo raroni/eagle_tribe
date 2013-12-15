@@ -97,6 +97,14 @@ Renderer.prototype = {
 
     if(this.mouse.visible) this.mouseRenderer.draw();
   },
+  clear: function() {
+    this.sprites.clear();
+    delete this.currentStaticRenderer;
+    for(var i=0; this.meshRenderers.length>i; i++) {
+      this.meshRenderers[i].release();
+    }
+    this.meshRenderers.length = 0;
+  },
   addSpriteRendering: function(spriteRendering) {
     var spriteRenderer = new SpriteRenderer(this.context, this.spriteShaderProgram, spriteRendering);
     this.sprites.add(spriteRenderer);

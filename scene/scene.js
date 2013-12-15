@@ -14,5 +14,8 @@ Scene.prototype = {
   add: function(entity) {
     this.entities.push(entity);
   },
-  onExit: function() {}
+  exit: function() {
+    this.game.clickManager.clear();
+    this.game.renderer.clear();
+  }
 };

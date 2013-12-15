@@ -27,7 +27,7 @@ Game.prototype = {
   },
   tick: function(timestamp) {
     if(this.pendingSceneName) {
-      this.scene.onExit();
+      this.scene.exit();
       this.scene = this.createScene(this.pendingSceneName);
       delete this.pendingSceneName;
     }
