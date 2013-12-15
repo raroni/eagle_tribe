@@ -32,6 +32,7 @@ Eagle.prototype.update = function(timeDelta) {
   }
   if(this.keyboard.keysPressed.a || this.keyboard.keysPressed.d) {
     var left = Direction3D.cross(forward, Direction3D.up());
+    left.normalize();
     translation = Vector3.multiply(left, timeDelta*this.speed);
     if(this.keyboard.keysPressed.d) translation.negate();
     this.transformation.translate(translation);
