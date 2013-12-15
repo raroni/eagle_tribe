@@ -5,14 +5,15 @@ var MeshData = {
   createSmallTrees: function(store) {
     var trunkHeight, bonusHeight, crownColor;
     var red = new Color(0.7, 0.32, 0.06);
+    var lightGreen = new Color(0.1, 0.8, 0);
     var darkGreen = new Color(0.29, 0.57, 0.11);
     var colors = [
-      Color.green(),
-      Color.green(),
-      Color.green(),
-      Color.green(),
-      Color.green(),
-      Color.green(),
+      lightGreen,
+      lightGreen,
+      lightGreen,
+      lightGreen,
+      lightGreen,
+      lightGreen,
       darkGreen,
       darkGreen,
       darkGreen,

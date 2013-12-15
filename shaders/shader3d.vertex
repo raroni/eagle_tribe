@@ -13,9 +13,11 @@ uniform vec3 directionalLight2Intensity;
 uniform vec3 ambientLightIntensity;
 
 varying vec3 sharedColor;
+varying float sharedPositionZ;
 
 void main() {
   gl_Position = clipTransformation*viewTransformation*worldTransformation*vec4(position, 1.0);
+  sharedPositionZ = gl_Position.z;
   sharedColor = color;
 
   vec4 worldNormal = normalize(worldTransformation * vec4(normal, 0));
