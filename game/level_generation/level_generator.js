@@ -17,7 +17,12 @@ LevelGenerator.prototype.growForest = function() {
   var size = 30, position;
   for(var x=-size; size>=x; x++) {
     for(var y=-size; size>=y; y++) {
-      if(!this.clearings[x + '-' + y]) this.level.addTree({ position: new Point2D(x, y) });
+      if(
+        !this.clearings[x + '-' + y]
+        // || nogenlunde random langt væk
+      ) {
+        this.level.addTree({ position: new Point2D(x, y) });
+      }
     }
   }
 };

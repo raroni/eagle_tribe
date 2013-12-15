@@ -1,5 +1,8 @@
 TODO:
 full window-viewport
+skøre farver på træer
+mørkere jord
+fog?
 Safari/Firefox-test
 
 Here's the deal:
