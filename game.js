@@ -1,6 +1,7 @@
 function Game(canvas) {
   this.screen = new Screen(canvas);
   this.mouse = new Mouse(canvas, this.screen);
+  this.keyboard = new Keyboard();
   this.cameras = new CameraRegistry(this.screen);
   this.renderer = new Renderer(canvas, this.cameras, this.mouse);
   this.meshes = new MeshRegistry();
@@ -16,12 +17,14 @@ Game.prototype = {
     if(!this.scene) this.scene = this.createStartScene();
     this.running = true;
     this.mouse.resume();
+    this.keyboard.resume();
     this.next();
   },
   pause: function() {
     cancelAnimationFrame(this.animationFrameRequest);
     this.running = false;
     this.mouse.pause();
+    this.keyboard.pause();
   },
   tick: function(timestamp) {
     if(this.pendingSceneName) {

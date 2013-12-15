@@ -34,12 +34,20 @@
   };
 
   function Keyboard() {
-    document.addEventListener('keydown', this.keyPressed.bind(this));
-    document.addEventListener('keyup', this.keyReleased.bind(this));
+    this.pressedCallback = this.keyPressed.bind(this);
+    this.releasedCallback = this.keyReleased.bind(this);
     this.keysPressed = {};
   }
 
   Keyboard.prototype = {
+    resume: function() {
+      document.addEventListener('keydown', this.pressedCallback);
+      document.addEventListener('keyup', this.releasedCallback);
+    },
+    pause: function() {
+      document.removeEventListener('keydown', this.pressedCallback);
+      document.removeEventListener('keyup', this.releasedCallback);
+    },
     keyPressed: function(e) {
       var keyName = keyCodeMap[e.keyCode];
       if(keyName) {
@@ -55,15 +63,6 @@
     anyKeysPressed: function() {
       return Object.keys(this.keysPressed).length !== 0;
     }
-  };
-
-  Keyboard.initialize = function() {
-    this.getInstance();
-  };
-
-  Keyboard.getInstance = function() {
-    if(!this.instance) this.instance = new Keyboard();
-    return this.instance;
   };
 
   window.Keyboard = Keyboard;

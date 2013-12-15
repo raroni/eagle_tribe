@@ -1,7 +1,7 @@
 function Eagle(game) {
   Entity3.call(this);
   
-  this.keyboard = Keyboard.getInstance();
+  this.keyboard = game.keyboard;
   this.speed = 0.004;
 
   game.mouse.on('moved', this.handleMouseMovement.bind(this));
