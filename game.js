@@ -7,7 +7,7 @@ function Game(canvas) {
   this.textures = new TextureRegistry();
 
   new Mouse(canvas);
-  this.clickManager = new ClickManager();
+  this.clickManager = new ClickManager(this.cameras.get('camera2D'));
 }
 
 Game.prototype = {

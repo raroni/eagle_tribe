@@ -37,8 +37,9 @@ Matrix3.multiplyVector = function(matrix, vector) {
 
   for(var row=0; 3>row; row++) {
     for(var step=0; 3>step; step++) {
-      result[row] += matrix[step*4+row] * vector[step];
+      result[row] += matrix[step*3+row] * vector[step];
     }
   }
+
   return result;
 };

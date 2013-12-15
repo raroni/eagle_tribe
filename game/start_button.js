@@ -14,5 +14,5 @@ function StartButton(game) {
 StartButton.prototype = Object.create(Entity2.prototype);
 
 StartButton.prototype.clicked = function() {
-  
+  console.log('START BUTTON HIT!');
 };

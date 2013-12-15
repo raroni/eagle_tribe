@@ -1,4 +1,5 @@
-function ClickManager() {
+function ClickManager(camera2D) {
+  this.camera = camera2D;
   var mouse = Mouse.getInstance();
   mouse.on('clicked', this.storeClick.bind(this));
   this.clickables = [];
@@ -6,14 +7,17 @@ function ClickManager() {
 }
 
 ClickManager.prototype.update = function() {
-  var localPosition, transformation, click;
+  var viewPosition, click, clickable;
+  var viewTransformation = this.camera.getViewTransformation();
   for(var i=0; this.clicks.length>i; i++) {
     click = this.clicks[i];
+    viewPosition = Point2D.transform(click.position, viewTransformation);
     for(var n=0; this.clickables.length>n; n++) {
-      transformation = this.clickables[n].getInverseWorldTransformation();
-      localPosition = Point2D.transform(click.position, transformation);
-      console.log(click.position);
-      //console.log(localPosition);
+      clickable = this.clickables[n];
+      if(clickable.contains(viewPosition)) {
+        clickable.handleClick(click);
+        break;
+      }
     }
   }
   this.clicks.length = 0;
