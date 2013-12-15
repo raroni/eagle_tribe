@@ -1,0 +1,13 @@
+precision mediump float;
+
+varying vec3 sharedColor;
+varying float sharedPositionZ;
+
+float density = 0.00005;
+
+void main() {
+  float fogFactor = sharedPositionZ*0.012;
+  fogFactor = clamp(fogFactor, 0.0, 1.0);
+
+  gl_FragColor = vec4(sharedColor, 1) + vec4(0.3, 0.3, 0.7, 0)*fogFactor;
+}

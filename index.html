@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Eagle Tribe</title>
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="./game.js"></script>
+  <script type="text/javascript" src="./rendering/renderer.js"></script>
+  <script type="text/javascript" src="./misc/request.js"></script>
+  <script type="text/javascript" src="./misc/math.js"></script>
+  <script type="text/javascript" src="./misc/screen.js"></script>
+  <script type="text/javascript" src="./cameras/camera_registry.js"></script>
+  <script type="text/javascript" src="./cameras/camera2d.js"></script>
+  <script type="text/javascript" src="./cameras/perspective_camera.js"></script>
+  <script type="text/javascript" src="./input/keyboard.js"></script>
+  <script type="text/javascript" src="./input/click.js"></script>
+  <script type="text/javascript" src="./misc/notifier.js"></script>
+  <script type="text/javascript" src="./geometry/plane.js"></script>
+  <script type="text/javascript" src="./math/vector2.js"></script>
+  <script type="text/javascript" src="./scene/scene.js"></script>
+  <script type="text/javascript" src="./math/vector4.js"></script>
+  <script type="text/javascript" src="./input/mouse.js"></script>
+  <script type="text/javascript" src="./input/click_manager.js"></script>
+  <script type="text/javascript" src="./input/clickable.js"></script>
+  <script type="text/javascript" src="./math/vector3.js"></script>
+  <script type="text/javascript" src="./scene/transformation3d.js"></script>
+  <script type="text/javascript" src="./scene/transformation2d.js"></script>
+  <script type="text/javascript" src="./geometry/rectangle.js"></script>
+  <script type="text/javascript" src="./geometry/point3d.js"></script>
+  <script type="text/javascript" src="./geometry/point2d.js"></script>
+  <script type="text/javascript" src="./meshes/mesh_registry.js"></script>
+  <script type="text/javascript" src="./rendering/vertex.js"></script>
+  <script type="text/javascript" src="./game/camera_handling.js"></script>
+  <script type="text/javascript" src="./geometry/direction3d.js"></script>
+  <script type="text/javascript" src="./rendering/color.js"></script>
+  <script type="text/javascript" src="./meshes/mesh.js"></script>
+  <script type="text/javascript" src="./meshes/group_mesh.js"></script>
+  <script type="text/javascript" src="./meshes/box_mesh.js"></script>
+  <script type="text/javascript" src="./rendering/directional_light.js"></script>
+  <script type="text/javascript" src="./meshes/plane_mesh.js"></script>
+  <script type="text/javascript" src="./rendering/mesh_rendering.js"></script>
+  <script type="text/javascript" src="./rendering/sprite_rendering.js"></script>
+  <script type="text/javascript" src="./rendering/sprite_renderer.js"></script>
+  <script type="text/javascript" src="./rendering/sprite_collection_renderer.js"></script>
+  <script type="text/javascript" src="./rendering/shader_program.js"></script>
+  <script type="text/javascript" src="./rendering/static_mesh_renderer.js"></script>
+  <script type="text/javascript" src="./rendering/mouse_renderer.js"></script>
+  <script type="text/javascript" src="./sprites/sprite_registry.js"></script>
+  <script type="text/javascript" src="./sprites/sprite.js"></script>
+  <script type="text/javascript" src="./textures/texture.js"></script>
+  <script type="text/javascript" src="./textures/texture_registry.js"></script>
+  <script type="text/javascript" src="./game/level_generation/level_generator.js"></script>
+  <script type="text/javascript" src="./game/level_generation/level.js"></script>
+  <script type="text/javascript" src="./game/world_scene.js"></script>
+  <script type="text/javascript" src="./math/matrix3.js"></script>
+  <script type="text/javascript" src="./math/matrix4.js"></script>
+  <script type="text/javascript" src="./scene/entity3.js"></script>
+  <script type="text/javascript" src="./scene/entity2.js"></script>
+  <script type="text/javascript" src="./game/eagle_tribe.js"></script>
+  <script type="text/javascript" src="./game/loading_scene.js"></script>
+  <script type="text/javascript" src="./game/ground.js"></script>
+  <script type="text/javascript" src="./game/menu_scene.js"></script>
+  <script type="text/javascript" src="./game/start_button.js"></script>
+  <script type="text/javascript" src="./game/mesh_data.js"></script>
+  <script type="text/javascript" src="./game/tree.js"></script>
+  <script type="text/javascript" src="./game/eagle.js"></script>
+  <script type="text/javascript" src="./game/boot.js"></script>
+</head>
+
+<body>
+  <p style="text-align: center; color: #ccc; font-family: arial; font-weight: bold;">
+    This game didn't survive its infancy. But it was fun to make! Made for the 28th Ludum Dare by Rasmus Rønn Nielsen / <a href="http://twitter.com/rasmurn">@rasmus</a><br><br>
+    Use mouse to look around, W/A/S/D to move, and Space to fly! Esc to release mouse.
+  </p>
+  <div class="mouse_lock_request">
+    Click here to start!
+  </div>
+  <canvas></canvas>
+</body>
+
+</html>
