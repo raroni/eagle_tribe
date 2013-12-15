@@ -16,7 +16,6 @@ function SpriteRenderer(context, program, spriteRendering) {
     vertexData[offset+2] = textureCoordinates[i][0],
     vertexData[offset+3] = textureCoordinates[i][1]
   }
-  console.log(rectangleCorners);
 
   this.context.bindBuffer(this.context.ARRAY_BUFFER, this.vertexBufferHandle);
   this.context.bufferData(this.context.ARRAY_BUFFER, vertexData, this.context.STATIC_DRAW);
