@@ -61,6 +61,10 @@ Renderer.prototype = {
   },
   finalizeInitialization: function() {
     this.shaderProgram3D.setMatrix4Uniform('clipTransformation', this.camera.getClipTransformation());
+
+    var aspectRatio = this.getAspectRatio();
+    var clipTransformation2D = Matrix3.scaling(new Vector2(1/aspectRatio, 1));
+    this.shaderProgram2D.setMatrix3Uniform('clipTransformation', clipTransformation2D);
     this.initializedCallback();
     delete this.initializedCallback;
   },

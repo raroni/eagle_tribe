@@ -24,3 +24,7 @@ Sprite.prototype.getTextureCoordinates = function() {
 Sprite.prototype.getTextureHandle = function() {
   return this.texture.handle;
 };
+
+Sprite.prototype.getAspectRatio = function() {
+  return this.rectangle.getAspectRatio();
+};

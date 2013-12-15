@@ -1,9 +1,10 @@
 function StartButton(game) {
   Entity2.call(this);
-  var rectangle = new Rectangle(new Vector2(0.5, 0.5));
+  var sprite = game.sprites.get('startButton');
+  var rectangle = new Rectangle(Vector2.multiply(new Vector2(sprite.getAspectRatio(), 1), 0.2));
   var clickable = new Clickable(rectangle, this.clicked.bind(this));
   game.clickManager.add(clickable);
-  var rendering = new SpriteRendering(this, game.sprites.get('startButton'), rectangle);
+  var rendering = new SpriteRendering(this, sprite, rectangle);
   game.renderer.addSpriteRendering(rendering);
 }
 

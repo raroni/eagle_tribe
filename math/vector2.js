@@ -15,3 +15,11 @@ Vector2.add = function(vector1, vector2) {
   );
   return result;
 };
+
+Vector2.multiply = function(vector, scalar) {
+  var result = new Vector2(
+    vector[0] * scalar,
+    vector[1] * scalar
+  );
+  return result;
+};

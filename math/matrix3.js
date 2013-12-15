@@ -24,3 +24,10 @@ Matrix3.identity = function() {
   matrix[8] = 1;
   return matrix;
 };
+
+Matrix3.scaling = function(scaling) {
+  var matrix = new Matrix3();
+  matrix[0] = scaling[0];
+  matrix[4] = scaling[1];
+  return matrix;
+};

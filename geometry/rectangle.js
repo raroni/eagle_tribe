@@ -21,3 +21,7 @@ Rectangle.prototype.getCorners = function() {
 
   return points;
 };
+
+Rectangle.prototype.getAspectRatio = function() {
+  return this.size[0]/this.size[1];
+};
