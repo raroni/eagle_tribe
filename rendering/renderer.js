@@ -1,5 +1,5 @@
 function Renderer(canvas, cameras, mouse) {
-  this.context = canvas.getContext("experimental-webgl");
+  this.context = canvas.getContext("webgl");
   this.perspectiveCamera = cameras.get('perspective');
   this.camera2D = cameras.get('camera2D');
   this.canvas = canvas;
@@ -23,29 +23,9 @@ Renderer.prototype = {
 
     this.setResolution(800, 600);
 
-    new Request('./shaders/shader3d.vertex', function(request) {
-      this.handleShaderSource(this.shaderProgram3D, 'vertex', request.response)
-    }.bind(this)).send();
-
-    new Request('./shaders/shader3d.fragment', function(request) {
-      this.handleShaderSource(this.shaderProgram3D, 'fragment', request.response)
-    }.bind(this)).send();
-
-    new Request('./shaders/sprite_shader.vertex', function(request) {
-      this.handleShaderSource(this.spriteShaderProgram, 'vertex', request.response)
-    }.bind(this)).send();
-
-    new Request('./shaders/sprite_shader.fragment', function(request) {
-      this.handleShaderSource(this.spriteShaderProgram, 'fragment', request.response)
-    }.bind(this)).send();
-
-    new Request('./shaders/mouse_shader.vertex', function(request) {
-      this.handleShaderSource(this.mouseShaderProgram, 'vertex', request.response)
-    }.bind(this)).send();
-
-    new Request('./shaders/mouse_shader.fragment', function(request) {
-      this.handleShaderSource(this.mouseShaderProgram, 'fragment', request.response)
-    }.bind(this)).send();
+    this.shaderProgram3D.load('shader3d', this.onShaderLoaded.bind(this));
+    this.spriteShaderProgram.load('sprite_shader', this.onShaderLoaded.bind(this));
+    this.mouseShaderProgram.load('mouse_shader', this.onShaderLoaded.bind(this));
   },
   setDirectionalLight: function(directionalLight, slot) {
     this.shaderProgram3D.setVector3Uniform('directionalLight' + slot + 'InverseDirection', Vector3.negate(directionalLight.direction));
@@ -54,14 +34,9 @@ Renderer.prototype = {
   setAmbientLightIntensity: function(ambientLightIntensity) {
     this.shaderProgram3D.setVector3Uniform('ambientLightIntensity', ambientLightIntensity);
   },
-  handleShaderSource: function(program, type, source) {
-    program[type + 'Source'] = source;
-    if(program.vertexSource && program.fragmentSource) {
-      program.compile();
-      program.link();
-      this.shaderProgramsReady++;
-      if(this.shaderProgramsReady == 3) this.finalizeInitialization();
-    }
+  onShaderLoaded: function() {
+    this.shaderProgramsReady++;
+    if(this.shaderProgramsReady == 3) this.finalizeInitialization();
   },
   setResolution: function() {
     this.canvas.width = 800;

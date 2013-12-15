@@ -3,6 +3,7 @@ Reduce duplication i shader program loading i Renderer
 Lighting-bug: Lyset ændrer sig efter hvordan du vender.
 Keyboard burde være ligesom Mouse - ikke singleton og kun virke når game.running.
 Rotate-max
+Safari/Firefox-test
 
 Here's the deal:
 

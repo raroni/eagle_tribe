@@ -1,4 +1,5 @@
 function ShaderProgram(context) {
+  this.name = name;
   this.handle = context.createProgram();
   this.context = context;
   this.attributeHandles = {};
@@ -14,6 +15,27 @@ ShaderProgram.prototype = {
     this.context.linkProgram(this.handle);
     if(!this.context.getProgramParameter(this.handle, this.context.LINK_STATUS)) {
       throw "Could not link the shader program!";
+    }
+  },
+  load: function(urlToken, callback) {
+    this.loadedCallback = callback;
+    var request = new Request('./shaders/' + urlToken + '.vertex', function(request) {
+      this.handleShaderSource('vertex', request.response);
+    }.bind(this));
+    request.send();
+
+    request = new Request('./shaders/' + urlToken + '.fragment', function(request) {
+      this.handleShaderSource('fragment', request.response);
+    }.bind(this));
+    request.send();
+  },
+  handleShaderSource: function(type, source) {
+    this[type + 'Source'] = source;
+    if(this.fragmentSource && this.vertexSource) {
+      this.compile();
+      this.link();
+      this.loadedCallback();
+      delete this.loadedCallback;
     }
   },
   setMatrix4Uniform: function(uniformName, matrix) {
