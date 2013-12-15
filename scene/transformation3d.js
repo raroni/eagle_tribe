@@ -35,6 +35,16 @@ Transformation3D.prototype.translate = function(translation) {
   this.markMatricesDirty();
 };
 
+Transformation3D.prototype.setYRotation = function(yRotation) {
+  this.yRotation = yRotation;
+  this.markMatricesDirty();
+};
+
+Transformation3D.prototype.setXRotation = function(xRotation) {
+  this.xRotation = xRotation;
+  this.markMatricesDirty();
+};
+
 Transformation3D.prototype.markMatricesDirty = function() {
   this.worldMatrixDirty = true;
   this.inverseWorldMatrixDirty = true;

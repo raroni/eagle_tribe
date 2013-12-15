@@ -1,5 +1,4 @@
 TODO:
-Rotate-max
 Safari/Firefox-test
 
 Here's the deal:

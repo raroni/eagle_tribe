@@ -42,6 +42,8 @@ Eagle.prototype.update = function(timeDelta) {
   if(!this.mouseMovements.isZero()) {
     this.transformation.rotateY(this.mouseMovements[0]*0.005);
     this.transformation.rotateX(this.mouseMovements[1]*-0.005);
+    if(this.transformation.xRotation > Math.PI*0.5) this.transformation.setXRotation(Math.PI*0.5);
+    if(this.transformation.xRotation < -Math.PI*0.5) this.transformation.setXRotation(-Math.PI*0.5);
     this.mouseMovements.reset();
   }
 };
