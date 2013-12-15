@@ -17,13 +17,11 @@ Game.prototype = {
     this.running = true;
     this.mouse.resume();
     this.next();
-    console.log('running');
   },
   pause: function() {
     cancelAnimationFrame(this.animationFrameRequest);
     this.running = false;
     this.mouse.pause();
-    console.log('paused.');
   },
   tick: function(timestamp) {
     if(this.pendingSceneName) {
