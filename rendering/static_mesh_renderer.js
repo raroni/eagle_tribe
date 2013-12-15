@@ -31,6 +31,9 @@ StaticMeshRenderer.prototype = {
       this.indices.push(index);
     }
   },
+  hasRoomFor: function(meshRendering) {
+    return 65536-this.indexOffset >= meshRendering.mesh.highestIndex;
+  },
   bake: function() {
     var i;
 

@@ -86,7 +86,8 @@ Renderer.prototype = {
   },
   addMeshRendering: function(meshRendering) {
     if(meshRendering.static) {
-      if(!this.currentStaticRenderer) {
+      if(!this.currentStaticRenderer || !this.currentStaticRenderer.hasRoomFor(meshRendering)) {
+        if(this.currentStaticRenderer) this.currentStaticRenderer.bake();
         this.currentStaticRenderer = new StaticMeshRenderer(this.context, this.shaderProgram3D);
         this.meshRenderers.push(this.currentStaticRenderer);
       }

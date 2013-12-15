@@ -10,7 +10,7 @@ LevelGenerator.prototype.getLevel = function() {
 LevelGenerator.prototype.generate = function() {
   this.level = new Level();
 
-  var size = 10;
+  var size = 20;
   for(var x=-size; size>=x; x++) {
     for(var y=-size; size>=y; y++) {
       this.level.addTree({ x: x, y: y });

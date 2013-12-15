@@ -1,12 +1,14 @@
 function Mesh() {
   this.indices = [];
   this.vertices = [];
+  this.highestIndex = 0;
 }
 
 Mesh.prototype.addFace = function(index1, index2, index3) {
   this.indices.push(index1);
   this.indices.push(index2);
   this.indices.push(index3);
+  this.highestIndex = Math.max(this.highestIndex, index1, index2, index3);
 };
 
 Mesh.prototype.addVertex = function(vertex) {
