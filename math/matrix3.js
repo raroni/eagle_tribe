@@ -31,3 +31,14 @@ Matrix3.scaling = function(scaling) {
   matrix[4] = scaling[1];
   return matrix;
 };
+
+Matrix3.multiplyVector = function(matrix, vector) {
+  var result = new Vector3();
+
+  for(var row=0; 3>row; row++) {
+    for(var step=0; 3>step; step++) {
+      result[row] += matrix[step*4+row] * vector[step];
+    }
+  }
+  return result;
+};

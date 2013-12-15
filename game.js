@@ -1,5 +1,7 @@
 function Game(canvas) {
-  this.renderer = new Renderer(canvas);
+  this.screen = new Screen(canvas);
+  this.cameras = new CameraRegistry(this.screen);
+  this.renderer = new Renderer(canvas, this.cameras);
   this.meshes = new MeshRegistry();
   this.sprites = new SpriteRegistry();
   this.textures = new TextureRegistry();

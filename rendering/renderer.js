@@ -1,5 +1,6 @@
-function Renderer(canvas) {
-  this.camera = new Camera(this);
+function Renderer(canvas, cameras) {
+  this.perspectiveCamera = cameras.get('perspective');
+  this.camera2D = cameras.get('camera2D');
   this.canvas = canvas;
   this.context = canvas.getContext("experimental-webgl");
   this.shaderProgram3D = new ShaderProgram(this.context);
@@ -36,14 +37,11 @@ Renderer.prototype = {
     }.bind(this)).send();
   },
   setDirectionalLight: function(directionalLight, slot) {
-    this.shaderProgram.setVector3Uniform('directionalLight' + slot + 'InverseDirection', Vector3.negate(directionalLight.direction));
-    this.shaderProgram.setVector3Uniform('directionalLight' + slot + 'Intensity', directionalLight.intensity);
+    this.shaderProgram3D.setVector3Uniform('directionalLight' + slot + 'InverseDirection', Vector3.negate(directionalLight.direction));
+    this.shaderProgram3D.setVector3Uniform('directionalLight' + slot + 'Intensity', directionalLight.intensity);
   },
   setAmbientLightIntensity: function(ambientLightIntensity) {
-    this.shaderProgram.setVector3Uniform('ambientLightIntensity', ambientLightIntensity);
-  },
-  getAspectRatio: function() {
-    return this.canvas.width/this.canvas.height;
+    this.shaderProgram3D.setVector3Uniform('ambientLightIntensity', ambientLightIntensity);
   },
   handleShaderSource: function(program, type, source) {
     program[type + 'Source'] = source;
@@ -60,11 +58,8 @@ Renderer.prototype = {
     this.context.viewport(0, 0, 800, 600);
   },
   finalizeInitialization: function() {
-    this.shaderProgram3D.setMatrix4Uniform('clipTransformation', this.camera.getClipTransformation());
-
-    var aspectRatio = this.getAspectRatio();
-    var clipTransformation2D = Matrix3.scaling(new Vector2(1/aspectRatio, 1));
-    this.shaderProgram2D.setMatrix3Uniform('clipTransformation', clipTransformation2D);
+    this.shaderProgram3D.setMatrix4Uniform('clipTransformation', this.perspectiveCamera.getClipTransformation());
+    this.shaderProgram2D.setMatrix3Uniform('clipTransformation', this.camera2D.getClipTransformation());
     this.initializedCallback();
     delete this.initializedCallback;
   },
@@ -77,7 +72,7 @@ Renderer.prototype = {
     }
 
     this.shaderProgram3D.use();
-    this.shaderProgram3D.setMatrix4Uniform('viewTransformation', this.camera.getViewTransformation());
+    this.shaderProgram3D.setMatrix4Uniform('viewTransformation', this.perspectiveCamera.getViewTransformation());
     this.shaderProgram3D.setMatrix4Uniform('worldTransformation', Matrix4.identity());
     for(var i=0; this.meshRenderers.length>i; i++) {
       this.meshRenderers[i].draw();
@@ -92,7 +87,7 @@ Renderer.prototype = {
   addMeshRendering: function(meshRendering) {
     if(meshRendering.static) {
       if(!this.currentStaticRenderer) {
-        this.currentStaticRenderer = new StaticMeshRenderer(this.context, this.shaderProgram);
+        this.currentStaticRenderer = new StaticMeshRenderer(this.context, this.shaderProgram3D);
         this.meshRenderers.push(this.currentStaticRenderer);
       }
       this.currentStaticRenderer.add(meshRendering);

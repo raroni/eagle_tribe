@@ -3,7 +3,7 @@ function SpriteRenderer(context, program, spriteRendering) {
   this.program = program;
   this.vertexBufferHandle = context.createBuffer();
   this.spriteRendering = spriteRendering;
-  this.transformation = spriteRendering.entity.transformation;
+  this.transformation = spriteRendering.transformation;
 
   var rectangleCorners = spriteRendering.rectangle.getCorners();
   var textureCoordinates = spriteRendering.sprite.getTextureCoordinates();

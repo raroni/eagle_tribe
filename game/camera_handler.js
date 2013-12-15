@@ -1,5 +1,5 @@
 function CameraHandler(game, eagle) {
-  this.transformation = game.renderer.camera.transformation;
+  this.transformation = game.cameras.perspective.transformation;
   this.eagle = eagle;
 }
 

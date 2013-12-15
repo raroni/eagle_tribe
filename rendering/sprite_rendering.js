@@ -1,7 +1,7 @@
-function SpriteRendering(entity, sprite, rectangle) {
+function SpriteRendering(sprite, transformation, rectangle) {
   if(!sprite) throw "Sprite required.";
 
-  this.entity = entity;
+  this.transformation = transformation;
   this.sprite = sprite;
   this.rectangle = rectangle;
 }

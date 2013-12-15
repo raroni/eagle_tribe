@@ -23,3 +23,11 @@ Vector2.multiply = function(vector, scalar) {
   );
   return result;
 };
+
+Vector2.negate = function(vector) {
+  var result = new Vector2(
+    vector[0]*-1,
+    vector[1]*-1
+  );
+  return result;
+};
