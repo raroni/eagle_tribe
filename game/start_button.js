@@ -9,6 +9,6 @@ function StartButton(game) {
 
 StartButton.prototype = Object.create(Entity2.prototype);
 
-StartButton.prototype.click = function() {
+StartButton.prototype.clicked = function() {
   
 };
