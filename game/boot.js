@@ -16,7 +16,7 @@
   }
 
   function changeCallback() {
-    hasMouseLock = document.webkitPointerLockElement === canvas;
+    hasMouseLock = (document.pointerLockElement || document.webkitPointerLockElement || document.mozPointerLockElement) === canvas;
     updateGameStatus();
   }
 
@@ -30,10 +30,13 @@
 
     mouseLockRequestElement = document.querySelector('body > .mouse_lock_request');
     mouseLockRequestElement.addEventListener('click', function() {
-      canvas.webkitRequestPointerLock();
+      canvas.requestPointerLock = canvas.requestPointerLock || canvas.webkitRequestPointerLock || canvas.mozRequestPointerLock;
+      canvas.requestPointerLock();
     });
 
     document.addEventListener('webkitpointerlockchange', changeCallback, false);
+    document.addEventListener('pointerlockchange', changeCallback, false);
+    document.addEventListener('mozpointerlockchange', changeCallback, false);
   }
 
   window.addEventListener('load', boot);
