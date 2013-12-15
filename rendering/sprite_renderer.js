@@ -21,8 +21,7 @@ function SpriteRenderer(context, program, spriteRendering) {
   this.context.bufferData(this.context.ARRAY_BUFFER, vertexData, this.context.STATIC_DRAW);
 
   var indexData = new Uint8Array([
-    1, 0, 2,
-    1, 2, 3
+    0, 2, 1, 3
   ]);
   this.indexBufferHandle = context.createBuffer();
   this.context.bindBuffer(this.context.ELEMENT_ARRAY_BUFFER, this.indexBufferHandle);
@@ -43,5 +42,5 @@ SpriteRenderer.prototype.draw = function() {
 
   this.context.bindBuffer(this.context.ELEMENT_ARRAY_BUFFER, this.indexBufferHandle);
 
-  this.context.drawElements(this.context.TRIANGLES, 6, this.context.UNSIGNED_BYTE, 0);
+  this.context.drawElements(this.context.TRIANGLE_STRIP, 4, this.context.UNSIGNED_BYTE, 0);
 };
