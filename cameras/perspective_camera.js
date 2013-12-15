@@ -4,11 +4,10 @@ function PerspectiveCamera(screen) {
 }
 
 PerspectiveCamera.prototype.getClipTransformation = function() {
-  var matrix = Matrix4.perspective(Math.PI/2, this.screen.getAspectRatio(), 0.1, 10);;
+  var matrix = Matrix4.perspective(Math.PI/2, this.screen.getAspectRatio(), 0.1, 200);;
   return matrix;
 };
 
 PerspectiveCamera.prototype.getViewTransformation = function() {
   return this.transformation.getInverseWorldMatrix();
 };
-

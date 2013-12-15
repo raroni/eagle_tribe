@@ -17,7 +17,7 @@ Renderer.prototype = {
   initialize: function(callback) {
     this.initializedCallback = callback;
 
-    this.context.clearColor(0.0, 0.0, 0.0, 1.0);
+    this.context.clearColor(0.34, 0.48, 0.8, 1.0);
     this.context.enable(this.context.CULL_FACE)
     this.context.enable(this.context.DEPTH_TEST);
 
