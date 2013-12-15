@@ -4,7 +4,7 @@ function WorldScene(game) {
   this.add(new Ground(this.game));
   var eagle = new Eagle(this.game);
   this.add(eagle);
-  this.add(new CameraHandler(this.game, eagle));
+  this.add(new CameraHandling(this.game, eagle));
   this.add(new Tree(this.game));
   this.game.mouse.hide();
 }
