@@ -15,6 +15,7 @@ StaticMeshRenderer.prototype = {
     var mesh = meshRendering.mesh;
     var rendererVertex, meshVertex, i;
     var meshVertices = mesh.getVertices();
+
     for(i=0; meshVertices.length>i; i++) {
       meshVertex = meshVertices[i];
       rendererVertex = new Vertex(Point3D.transform(meshVertex.position, transformation.getWorldMatrix()), meshVertex.color, meshVertex.normal);

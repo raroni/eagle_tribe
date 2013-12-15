@@ -8,7 +8,7 @@ var MeshData = {
 
     var trunkMesh = new BoxMesh(trunkTransformation, Color.brown());
 
-    var crownTransformation = Matrix4.scaling(new Vector3(1, 0.6, 1));
+    var crownTransformation = Matrix4.scaling(new Vector3(0.8, 0.6, 0.8));
     crownTransformation.multiply(Matrix4.translation(new Vector3(0, 2, 0)));
     var crownMesh = new BoxMesh(crownTransformation, Color.green());
 

@@ -1,15 +1,24 @@
 function WorldScene(game) {
   Scene.call(this, game);
+  this.setupLevel();
   this.setupLight();
   this.add(new Ground(this.game));
   var eagle = new Eagle(this.game);
   this.add(eagle);
   this.add(new CameraHandling(this.game, eagle));
-  this.add(new Tree(this.game));
   this.game.mouse.hide();
 }
 
 WorldScene.prototype = Object.create(Scene.prototype);
+
+WorldScene.prototype.setupLevel = function() {
+  var levelGenerator = new LevelGenerator();
+  var level = levelGenerator.getLevel();
+
+  for(var i=0; level.trees.length>i; i++) {
+    this.add(new Tree(this.game, new Point3D(level.trees[i].x, 0, level.trees[i].y)));
+  }
+};
 
 WorldScene.prototype.setupLight = function() {
   var directionalLight1 = new DirectionalLight();
