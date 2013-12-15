@@ -1,5 +1,5 @@
 function LevelGenerator() {
-  
+  this.clearings = {};
 }
 
 LevelGenerator.prototype.getLevel = function() {
@@ -9,11 +9,27 @@ LevelGenerator.prototype.getLevel = function() {
 
 LevelGenerator.prototype.generate = function() {
   this.level = new Level();
+  this.createStartClearing();
+  this.growForest();
+};
 
-  var size = 20;
+LevelGenerator.prototype.growForest = function() {
+  var size = 30, position;
   for(var x=-size; size>=x; x++) {
     for(var y=-size; size>=y; y++) {
-      this.level.addTree({ x: x, y: y });
+      if(!this.clearings[x + '-' + y]) this.level.addTree({ position: new Point2D(x, y) });
+    }
+  }
+};
+
+LevelGenerator.prototype.createStartClearing = function() {
+  var size = 4, position;
+  for(var x=-size; size>=x; x++) {
+    for(var y=-size; size>=y; y++) {
+      position = new Point2D(x, y);
+      if(position.getLength() < 3.5) {
+        this.clearings[x + '-' + y] = true;
+      }
     }
   }
 };

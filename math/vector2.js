@@ -17,6 +17,10 @@ Vector2.prototype.add = function(vector) {
   this.set(Vector2.add(this, vector));
 };
 
+Vector2.prototype.getLength = function() {
+  return Math.sqrt(Math.pow(this[0], 2) + Math.pow(this[1], 2));
+};
+
 Vector2.prototype.isZero = function() {
   return this[0] === 0 && this[1] === 0;
 };

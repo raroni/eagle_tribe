@@ -16,7 +16,7 @@ WorldScene.prototype.setupLevel = function() {
   var level = levelGenerator.getLevel();
 
   for(var i=0; level.trees.length>i; i++) {
-    this.add(new Tree(this.game, new Point3D(level.trees[i].x, 0, level.trees[i].y)));
+    this.add(new Tree(this.game, new Point3D(level.trees[i].position[0], 0, level.trees[i].position[1])));
   }
 };
 

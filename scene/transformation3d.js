@@ -30,6 +30,16 @@ Transformation3D.prototype.translateY = function(yTranslation) {
   this.markMatricesDirty();
 };
 
+Transformation3D.prototype.translateZ = function(zTranslation) {
+  this.position[2] += zTranslation;
+  this.markMatricesDirty();
+};
+
+Transformation3D.prototype.translateX = function(xTranslation) {
+  this.position[0] += xTranslation;
+  this.markMatricesDirty();
+};
+
 Transformation3D.prototype.translate = function(translation) {
   this.position.add(translation);
   this.markMatricesDirty();
