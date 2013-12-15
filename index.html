@@ -3,9 +3,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Eagle Tribe</title>
+  <link href="/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="./game.js"></script>
   <script type="text/javascript" src="./rendering/renderer.js"></script>
   <script type="text/javascript" src="./misc/request.js"></script>
+  <script type="text/javascript" src="./misc/math.js"></script>
   <script type="text/javascript" src="./misc/screen.js"></script>
   <script type="text/javascript" src="./cameras/camera_registry.js"></script>
   <script type="text/javascript" src="./cameras/camera2d.js"></script>
@@ -42,6 +44,7 @@
   <script type="text/javascript" src="./rendering/sprite_collection_renderer.js"></script>
   <script type="text/javascript" src="./rendering/shader_program.js"></script>
   <script type="text/javascript" src="./rendering/static_mesh_renderer.js"></script>
+  <script type="text/javascript" src="./rendering/mouse_renderer.js"></script>
   <script type="text/javascript" src="./sprites/sprite_registry.js"></script>
   <script type="text/javascript" src="./sprites/sprite.js"></script>
   <script type="text/javascript" src="./textures/texture.js"></script>
@@ -63,6 +66,9 @@
 </head>
 
 <body>
+  <div class="mouse_lock_request">
+    HTML5 won't let me capture your mouse unless you click me first. So do it now!</div>
+  </div>
   <canvas></canvas>
 </body>
 

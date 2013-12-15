@@ -1,19 +1,29 @@
 function Game(canvas) {
   this.screen = new Screen(canvas);
+  this.mouse = new Mouse(canvas, this.screen);
   this.cameras = new CameraRegistry(this.screen);
-  this.renderer = new Renderer(canvas, this.cameras);
+  this.renderer = new Renderer(canvas, this.cameras, this.mouse);
   this.meshes = new MeshRegistry();
   this.sprites = new SpriteRegistry();
   this.textures = new TextureRegistry();
+  this.running = false;
 
-  new Mouse(canvas);
-  this.clickManager = new ClickManager(this.cameras.get('camera2D'));
+  this.clickManager = new ClickManager(this.mouse, this.screen);
 }
 
 Game.prototype = {
   run: function() {
-    this.scene = this.createStartScene();
+    if(!this.scene) this.scene = this.createStartScene();
+    this.running = true;
+    this.mouse.resume();
     this.next();
+    console.log('running');
+  },
+  pause: function() {
+    cancelAnimationFrame(this.animationFrameRequest);
+    this.running = false;
+    this.mouse.pause();
+    console.log('paused.');
   },
   tick: function(timestamp) {
     if(this.pendingSceneName) {
@@ -32,7 +42,7 @@ Game.prototype = {
     this.pendingSceneName = sceneName;
   },
   next: function() {
-    requestAnimationFrame(this.tick.bind(this));
+    this.animationFrameRequest = requestAnimationFrame(this.tick.bind(this));
   },
   initialize: function(callback) {
     this.renderer.initialize(callback);

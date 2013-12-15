@@ -1,6 +1,5 @@
-function ClickManager(camera2D) {
-  this.camera = camera2D;
-  var mouse = Mouse.getInstance();
+function ClickManager(mouse, screen) {
+  this.screen = screen;
   mouse.on('clicked', this.storeClick.bind(this));
   this.clickables = [];
   this.clicks = [];
@@ -8,7 +7,7 @@ function ClickManager(camera2D) {
 
 ClickManager.prototype.update = function() {
   var viewPosition, click, clickable;
-  var viewTransformation = this.camera.getViewTransformation();
+  var viewTransformation = this.screen.getViewTransformation();
   for(var i=0; this.clicks.length>i; i++) {
     click = this.clicks[i];
     viewPosition = Point2D.transform(click.position, viewTransformation);

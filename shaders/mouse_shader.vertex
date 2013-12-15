@@ -1,0 +1,14 @@
+uniform mat3 clipTransformation;
+uniform vec2 offset;
+
+attribute vec2 position;
+attribute vec3 color;
+
+varying vec3 sharedColor;
+
+void main() {
+  vec2 viewPosition = position + offset;
+  vec3 clipPosition = clipTransformation * vec3(viewPosition, 1);
+  gl_Position = vec4(clipPosition.xy, 0, 1);
+  sharedColor = color;
+}

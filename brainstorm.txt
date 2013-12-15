@@ -1,3 +1,6 @@
+TODO:
+Reduce duplication i shader program loading i Renderer
+
 Here's the deal:
 
 Vi har et kort med træer og græs og måske vand.

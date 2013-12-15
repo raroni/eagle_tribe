@@ -42,6 +42,13 @@ ShaderProgram.prototype = {
     this.use();
     this.context.uniform3fv(handle, array);
   },
+  setVector2Uniform: function(uniformName, vector) {
+    var handle = this.getUniformHandle(uniformName);
+    var array = new Float32Array(2);
+    for(var i=0; 2>i; i++) array[i] = vector[i];
+    this.use();
+    this.context.uniform2fv(handle, array);
+  },
   use: function() {
     this.context.useProgram(this.handle);
   },
