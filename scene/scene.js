@@ -13,5 +13,6 @@ Scene.prototype = {
   },
   add: function(entity) {
     this.entities.push(entity);
-  }
+  },
+  onExit: function() {}
 };

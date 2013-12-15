@@ -1,6 +1,6 @@
 var MeshData = {
   load: function(store) {
-    store.tree = this.createTree();
+    store.add('tree', this.createTree());
   },
   createTree: function() {
     var trunkTransformation = Matrix4.scaling(new Vector3(0.3, 1, 0.3));

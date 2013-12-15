@@ -1,8 +1,8 @@
 function Tree(game) {
   Entity3.call(this);
 
-  var trunkRendering = new MeshRendering(this, game.meshes.tree, { static: true });
+  var trunkRendering = new MeshRendering(this, game.meshes.get('tree'), { static: true });
 
   this.transformation.setPositionZ(3);
-  game.renderer.add(trunkRendering);
+  game.renderer.addMeshRendering(trunkRendering);
 }

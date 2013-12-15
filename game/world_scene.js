@@ -1,11 +1,11 @@
 function WorldScene(game) {
   Scene.call(this, game);
   this.setupLight();
-  this.add(new Ground(game));
-  var eagle = new Eagle(game);
+  this.add(new Ground(this.game));
+  var eagle = new Eagle(this.game);
   this.add(eagle);
-  this.add(new CameraHandler(game, eagle));
-  this.add(new Tree(game));
+  this.add(new CameraHandler(this.game, eagle));
+  this.add(new Tree(this.game));
 }
 
 WorldScene.prototype = Object.create(Scene.prototype);

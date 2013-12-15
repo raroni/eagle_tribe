@@ -4,7 +4,7 @@ function Ground(game) {
   var planeMesh = new PlaneMesh(Point3D.origin(), size, Direction3D.forward(), Direction3D.up(), Color.red());
   this.transformation.setPositionZ(1);
   var rendering = new MeshRendering(this, planeMesh, { static: true });
-  game.renderer.add(rendering);
+  game.renderer.addMeshRendering(rendering);
 }
 
 Ground.prototype = Object.create(Entity3.prototype);
