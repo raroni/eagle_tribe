@@ -23,6 +23,11 @@ ShaderProgram.prototype = {
     this.use();
     this.context.uniformMatrix4fv(handle, false, array);
   },
+  setIntegerUniform: function(uniformName, integer) {
+    var handle = this.getUniformHandle(uniformName);
+    this.use();
+    this.context.uniform1i(handle, integer);
+  },
   setMatrix3Uniform: function(uniformName, matrix) {
     var handle = this.getUniformHandle(uniformName);
     var array = new Float32Array(9);

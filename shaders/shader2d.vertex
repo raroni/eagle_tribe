@@ -3,8 +3,10 @@ uniform mat3 worldTransformation;
 attribute vec2 position;
 attribute vec2 textureCoordinate;
 
+varying mediump vec2 sharedTextureCoordinate;
+
 void main() {
   mat3 x = worldTransformation;
-  vec2 z = textureCoordinate;
+  sharedTextureCoordinate = textureCoordinate;
   gl_Position = vec4(position, 0, 1);
 }

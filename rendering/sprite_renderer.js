@@ -32,6 +32,11 @@ function SpriteRenderer(context, program, spriteRendering) {
 }
 
 SpriteRenderer.prototype.draw = function() {
+  this.context.activeTexture(this.context.TEXTURE0);
+  this.context.bindTexture(this.context.TEXTURE_2D, this.spriteRendering.sprite.getTextureHandle());
+
+  this.program.setIntegerUniform("sampler", 0);
+
   this.program.setMatrix3Uniform("worldTransformation", this.transformation.getWorldMatrix());
 
   this.context.bindBuffer(this.context.ARRAY_BUFFER, this.vertexBufferHandle);
@@ -43,4 +48,6 @@ SpriteRenderer.prototype.draw = function() {
   this.context.bindBuffer(this.context.ELEMENT_ARRAY_BUFFER, this.indexBufferHandle);
 
   this.context.drawElements(this.context.TRIANGLE_STRIP, 4, this.context.UNSIGNED_BYTE, 0);
+
+  this.context.bindTexture(this.context.TEXTURE_2D, null);
 };
