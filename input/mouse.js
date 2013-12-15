@@ -15,6 +15,14 @@ Mouse.prototype.resume = function() {
   this.canvas.addEventListener('mousemove', this.moveCallback);
 };
 
+Mouse.prototype.hide = function() {
+  this.visible = false;
+};
+
+Mouse.prototype.show = function() {
+  this.visible = true;
+};
+
 Mouse.prototype.pause = function() {
   this.canvas.removeEventListener('mousedown', this.pressCallback);
   this.canvas.removeEventListener('mousemove', this.moveCallback);

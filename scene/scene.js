@@ -17,5 +17,6 @@ Scene.prototype = {
   exit: function() {
     this.game.clickManager.clear();
     this.game.renderer.clear();
+    this.game.mouse.show();
   }
 };

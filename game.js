@@ -32,9 +32,11 @@ Game.prototype = {
       delete this.pendingSceneName;
     }
     var timeDelta = this.lastTimestamp ? timestamp-this.lastTimestamp : 0;
-    this.clickManager.update();
-    this.scene.update(timeDelta);
-    this.renderer.draw();
+    if(timeDelta < 120) {
+      this.clickManager.update();
+      this.scene.update(timeDelta);
+      this.renderer.draw();
+    }
     this.lastTimestamp = timestamp;
     this.next();
   },
